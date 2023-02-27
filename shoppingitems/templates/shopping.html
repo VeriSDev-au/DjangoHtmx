@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<main id="main" class="main">
+
+    <!-- Breadcrumb -->
+    <div class="pagetitle">
+        <h1>Shopping List</h1>
+        <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item active">Shopping List</li>
+        </ol>
+        </nav>
+    </div>
+    <!-- End Breadcrumb -->
+
+    <section class="section shopping list">
+        <div class="row">
+            {% include "partials/shopping-list.html" %}
+        </div>
+    </section>
+
+</main>
+{% endblock content %}

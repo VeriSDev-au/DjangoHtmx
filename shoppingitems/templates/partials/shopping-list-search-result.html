@@ -1,0 +1,29 @@
+    {% if shoppingitemsearchresults is not None and shoppingitemsearchresults.count > 0 %}
+
+    <h5 class="card-title">History Items</h5> 
+
+    <!-- Default List group -->
+    <div id="shoppingitem-list-current-item">
+    <ul class="list-group">
+
+        {% for shoppingitemsearchresult in shoppingitemsearchresults %}
+        <li class="list-group-item col-12 d-flex justify-content-between align-items-center">
+        <span style="cursor: pointer;"
+            hx-delete="{% url 'add-usershoppingitem' shoppingitemsearchresult.pk %}"
+            hx-target="#usershoppingitem-list">
+            <i class="bi bi-plus-square-fill text-success me-3" style="cursor:pointer"></i>
+        </span>
+
+        <input type="email" readonly class="form-control-plaintext" id="floatingPlaintextInput" value="{{ shoppingitemsearchresult.name }}">
+        <span style="cursor: pointer;"
+            hx-delete="{% url 'del-shoppingitem' shoppingitemsearchresult.pk %}"
+            hx-target="#shoppingitem-list-search-script"
+            hx-confirm="Are you sure want to delete this item?">
+            <i class="bi bi-trash text-danger" style="cursor:pointer"></i>
+        </span>
+        </li>
+        {% endfor %}
+
+    </ul>        
+    </div>
+    {% endif %}

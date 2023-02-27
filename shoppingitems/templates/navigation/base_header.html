@@ -1,0 +1,42 @@
+{% load static %}
+<header id="header" class="header fixed-top d-flex align-items-center">
+    <div class="d-flex align-items-center justify-content-between">
+        <a href="/" class="logo d-flex align-items-center">
+        <img src="{% static 'img/logo.png' %}" alt="">
+        <span class="d-none d-lg-block">Shopping List App</span>
+        </a>
+        <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+    <!-- Search Bar - Temporary Hide
+    <div class="search-bar">
+        <form class="search-form d-flex align-items-center mt-3" method="POST" action="#">
+        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+        </form>
+    </div> -->
+
+    <nav class="header-nav ms-auto">
+        <ul class="d-flex align-items-center">
+
+        <li class="nav-item d-block d-lg-none">
+            <a class="nav-link nav-icon search-bar-toggle " href="#">
+            <i class="bi bi-search"></i>
+            </a>
+        </li><!-- End Search Icon-->
+
+        {% if user.is_authenticated %}
+            <li class="nav-item pe-3">
+                <a class="nav-link nav-profile d-flex align-items-center pe-0" href="{% url 'vsd-logout'%}">
+                <span class="d-none d-md-block ps-2">Logout</span></a>
+            </li><!-- Login -->
+        {% else %}
+            <li class="nav-item pe-3">
+                <a class="nav-link nav-profile d-flex align-items-center pe-0" href="{% url 'vsd-login'%}">
+                <span class="d-none d-md-block ps-2">Login</span></a>
+            </li><!-- Login -->
+        {% endif %}
+
+        </ul>
+    </nav><!-- End Icons Navigation -->
+</header>

@@ -1,0 +1,56 @@
+<div class="card-body">
+    <h5 class="card-title">My Shopping List</h5> 
+    {% csrf_token %}
+    <!-- Default List group -->
+    <form class="sortable list-group" 
+        hx-trigger="end"
+        hx-post="{% url 'sort-usershoppingitem' %}"
+        hx-target="#usershoppingitem-list">
+        <div class="htmx-indicator">Updating...</div>
+
+        {% for usershoppingitem in usershoppingitems %}
+        <div>
+            <input type="hidden" name="shoppingitem_order" value="{{ usershoppingitem.pk }}">   
+            <li class="list-group-item col-12 d-flex justify-content-between align-items-center">
+                {% if usershoppingitem.checked %}
+                <input 
+                    type="checkbox"
+                    name="shoppingflag"
+                    class="form-check-input mt-0 me-3" 
+                    aria-label="Checkbox for following text input"
+                    checked="checked"
+                    value="{{ usershoppingitem.checked }}"
+
+                    hx-trigger="click"
+                    hx-post="{% url 'put-usershoppingitem' usershoppingitem.pk %}"
+                    hx-target="#usershoppingitem-list"
+                    >
+                {% else %} 
+                <input 
+                    type="checkbox" 
+                    name="shoppingflag"
+                    class="form-check-input mt-0 me-3" 
+                    value="{{ usershoppingitem.checked }}"
+                    aria-label="Checkbox for following text input"
+                    
+                    hx-trigger="click"
+                    hx-post="{% url 'put-usershoppingitem' usershoppingitem.pk %}"
+                    hx-target="#usershoppingitem-list">
+                {% endif %} 
+
+                <label class="justify-content-between align-items-center me-3 text-end">{{ usershoppingitem.order }}</label>
+                
+                <input type="text" readonly class="form-control-plaintext" id="floatingPlaintextInput" value="{{ usershoppingitem.shoppingitem.name }}">
+                <span style="cursor: pointer;"
+                    hx-delete="{% url 'del-usershoppingitem' usershoppingitem.pk %}"
+                    hx-target="#usershoppingitem-list"
+                    hx-confirm="Are you sure want to delete this item?">
+                    <i class="bi bi-trash text-danger" style="cursor:pointer"></i>
+                </span>
+                
+            </li>
+        </div>
+        {% endfor %}
+        <!-- End Default List group -->
+    </form>
+</div>

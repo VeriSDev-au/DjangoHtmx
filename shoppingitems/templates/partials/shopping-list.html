@@ -1,0 +1,45 @@
+<div class="col-lg-6">
+  <div class="card">
+    <div class="card-body">
+
+      <div class="search-bar">
+        <form  
+          hx-post="{% url 'add-shoppingitem-and-usershoppingitem' %}"
+          hx-target="#shoppingitem-list"
+          class="search-form d-flex align-items-center mt-2">
+          {% csrf_token %}
+
+          <input type="text" 
+              id="shoppingitemname"
+              name="shoppingitemname" 
+              class="form-control" 
+              placeholder="Type new shopping item in here" 
+              title="Enter search keyword"
+              
+              hx-trigger="keyup changed delay:500ms"
+              hx-get="{% url 'get-shoppingitem' %}"
+              hx-target="#shoppingitem-list-search-result">
+
+          <button 
+              hx-post="{% url 'add-shoppingitem-and-usershoppingitem' %}"
+              hx-target="#usershoppingitem-list"
+              type="submit" class="btn btn-outline-success ms-2"><i class="bi bi-plus-square-fill text-success"></i></button>
+        </form>
+      </div>
+
+      <div id="shoppingitem-list-search-script"></div>
+
+      <div id="shoppingitem-list-search-result">
+        {% include "partials/shopping-list-search-result.html" %}
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-6">
+    <div id="usershoppingitem-list" class="card">
+      {% include "partials/shopping-list-check-list.html" %}
+    </div>
+</div>
+

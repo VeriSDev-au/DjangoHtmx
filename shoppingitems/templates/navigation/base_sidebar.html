@@ -2,12 +2,14 @@
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
-        <li class="nav-item">
-        <a class="nav-link collapsed" href="/">
-            <i class="bi bi-card-checklist"></i>
-            <span>Shopping List</span>
-        </a>
-        </li><!-- End Dashboard Nav -->
+        {% if user.is_authenticated %}
+            <li class="nav-item">
+            <a class="nav-link collapsed" href="{% url 'vsd-shoppinglist' %}">
+                <i class="bi bi-card-checklist"></i>
+                <span>Shopping List</span>
+            </a>
+            </li><!-- End Dashboard Nav -->
+        {% endif %}
 
         <li class="nav-heading">Pages</li>
 

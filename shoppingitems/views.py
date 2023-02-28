@@ -6,8 +6,7 @@ from shoppingitems.utils import get_max_order
 
 
 class IndexView(TemplateView):
-    template_name = "shopping.html"
-
+    template_name = "home.html"
 
 class AboutView(TemplateView):
     template_name = "about.html"

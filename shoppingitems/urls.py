@@ -3,7 +3,8 @@ from shoppingitems import views
 from users import views as user_views
 
 urlpatterns = [
-    path("", views.ShoppingListView.as_view(), name="vsd-home"),
+    path("", views.IndexView.as_view(), name="vsd-home"),
+    path("shoppinglist/", views.ShoppingListView.as_view(), name="vsd-shoppinglist"),
     path("about/", views.AboutView.as_view(), name="vsd-about"),
     path("register/", user_views.register, name="vsd-register"),
 ]

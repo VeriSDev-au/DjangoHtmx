@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+<main id="main" class="main">
+
+    <!-- Breadcrumb -->
+    <div class="pagetitle">
+        <h1>Home</h1>
+        <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item active">Home</li>
+        </ol>
+        </nav>
+    </div>
+    <!-- End Breadcrumb -->
+
+    <section class="section">
+        <div class="row">
+          <div class="col-lg-6">
+  
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">How to try this Shopping List App</h5>
+                <p>If you just want to try without register with your credential, you need to <a href="{% url 'vsd-login' %}">Login</a> with the following sample of credential:</p>
+                <p class="mx-5"><small>Username = vsdpublic</small></p>
+                <p class="mx-5"><small>Password = Password#</small></p>
+                
+              </div>
+            </div>
+  
+          </div>
+  
+          <div class="col-lg-6">
+  
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Create your own Shopping List</h5>
+                <p>For your convinience, please register your own credential by <a href="{% url 'vsd-register' %}">register in here</a></p>
+              </div>
+            </div>
+  
+          </div>
+        </div>
+      </section>
+
+</main>
+{% endblock content %}
